@@ -1,0 +1,2 @@
+home-page-path: resources/template/index.html
+mongo-url-path: mongodb://admin:8BlanchE8@80.190.84.21:27017/?directConnection=true&serverSelectionTimeoutMS=2000

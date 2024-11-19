@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Omenergy</title>
+        <meta
+            name="description"
+            content="Cardio is a free one page template made exclusively for Codrops by Luka Cvetinovic"
+        />
+        <meta
+            name="keywords"
+            content="html template, css, free, one page, gym, fitness, web design"
+        />
+        <meta name="author" content="Luka Cvetinovic for Codrops" />
+        <!-- Favicons (created with http://realfavicongenerator.net/)-->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="assets/images/favicons/apple-touch-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="assets/images/favicons/apple-touch-icon-60x60.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            href="assets/images/favicons/favicon-32x32.png"
+            sizes="32x32"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            href="assets/images/favicons/favicon-16x16.png"
+            sizes="16x16"
+        />
+        <link rel="manifest" href="assets/images/favicons/manifest.json" />
+        <link rel="shortcut icon" href="assets/images/favicons/favicon.ico" />
+
+        <meta name="msapplication-TileColor" content="#00a8ff" />
+        <meta
+            name="msapplication-config"
+            content="assets/images/favicons/browserconfig.xml"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <!-- Normalize -->
+        <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
+        <!-- Owl -->
+        <link rel="stylesheet" type="text/css" href="assets/css/owl.css" />
+        <!-- Animate.css -->
+        <link rel="stylesheet" type="text/css" href="assets/css/animate.css" />
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="assets/fonts/font-awesome-4.1.0/css/font-awesome.min.css"
+        />
+        <!-- Elegant Icons -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="assets/fonts/eleganticons/et-icons.css"
+        />
+        <!-- Main style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/cardio.css" />
+    </head>
+
+    <body>
+        <div class="preloader">
+            <img src="assets/images/loader.gif" alt="Preloader image" />
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button
+                        type="button"
+                        class="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1"
+                    >
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div
+                    class="collapse navbar-collapse"
+                    id="bs-example-navbar-collapse-1"
+                >
+                    <ul class="nav navbar-nav navbar-right main-nav">
+                        <li><a href="#intro">{{ .NavigationInfo.Intro }}</a></li>
+                        <li>
+                            <a href="#services"
+                                >{{ .NavigationInfo.AboutTrainings }}</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#pricing">{{ .NavigationInfo.Pricing }}</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <header id="intro">
+            <div class="container">
+                <div class="table">
+                    <div class="header-text">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h3 class="light white">
+                                    {{ .InfoDataSet.Header }}
+
+                                </h3>
+                                <h1 class="white typed">
+                                    {{ .InfoDataSet.Description }}
+
+                                </h1>
+                                <span class="typed-cursor">|</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="services" class="section section-padded">
+            <div class="container">
+                <div class="row text-center title">
+                    <h2>  {{ .InfoDataSet.CoursesTitle }}</h2>
+                </div>
+                <div class="row services">
+                    {{ range $service := .Services }}
+                    <div class="col-md-4" >
+                        <div class="service">
+                            <div class="icon-holder">
+                                <img
+                                    src={{ $service.Image }}
+                                    alt=""
+                                    class="icon"
+                                > <img>
+                            </div>
+                            <h4
+                                class="heading"
+
+                            > {{ $service.Header }}</h4>
+                            <p
+                                class="description"
+
+                            >{{ $service.Description }}</p>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            <div class="cut cut-bottom"></div>
+        </section>
+        <section id="pricing" class="section">
+            <div class="container">
+                <section class="plans__container">
+                    <div class="plans">
+                        <div class="plansHero">
+                            <h1 class="plansHero__title">{{ .NavigationInfo.Pricing }}</h1>
+                        </div>
+                        <div class="planItem__container">
+                            <!--free plan starts -->
+                            {{ range $course := .Courses }}
+                            <div class="planItem planItem--free">
+
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h2> {{ $course.Header }}</h2>
+                                    </div>
+                                    <div class="card__desc"> {{ $course.Description }}</div>
+                                </div>
+
+                                <div class="price">{{ $course.Pricing }}<span></span></div>
+
+                                <ul class="featureList">
+                                    {{ range $element := $course.AvailableOptions }}
+                                    <li>{{ $element}}</li>
+                                    {{ end }}
+<!--                                    <li class="disabled">Chat support</li>-->
+                                </ul>
+
+                            </div>
+                            <!--free plan ends -->
+                            {{ end }}
+
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section class="section section-padded blue-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="owl-twitter owl-carousel">
+                            {{ range $cource := .Courses }}
+                            <div class="item text-center">
+                                <i class="icon fa fa-book"></i>
+                                <h4 class="white light">
+                                    {{ $cource.Header }}
+                                </h4>
+                                <h4 class="light-white light">
+                                    {{ $cource.Description }}
+                                </h4>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div
+            class="modal fade"
+            id="modal1"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+
+        </div>
+        <footer>
+            <div class="container">
+                <div class="row bottom-footer text-center-mobile">
+                    <div class="col-sm-8">
+                        <p>
+                            &copy; 2024 All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-sm-4 text-right text-center-mobile">
+                        <ul class="social-footer">
+                            <li>
+                                <a
+                                    href="https://www.facebook.com/share/SXCGQinz5opQdr33/?mibextid=LQQJ4d"
+                                    ><i class="fa fa-facebook"></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Holder for mobile navigation -->
+        <div class="mobile-nav">
+            <ul></ul>
+            <a href="#" class="close-link"><i class="arrow_up"></i></a>
+        </div>
+        <!-- Scripts -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/typewriter.js"></script>
+        <script src="assets/js/jquery.onepagenav.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script
+            type="text/javascript"
+            src="assets/webjars/js-cookie/js.cookie.js"
+        ></script>
+    </body>
+</html>
